@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title> A cube </title>
+<style type="text/css">
+.cube { 
+width: 200px; 
+height: 200px; 
+margin: 100px auto; 
+perspective: 790px;
+border-radius: 50%;
+color:blue; 
+}
+
+.b-cube{ 
+width: 200px; 
+transform-style: preserve-3d; 
+transform-origin: 150px 100px 0;
+animation: rotate 24s ease-in-out infinite; 
+} 
+
+.b-cube div { 
+position: absolute; 
+width: 200px; 
+height: 200px; 
+overflow: hidden; 
+display: -webkit-flex; 
+justify-content: center; 
+align-items: center; 
+} 
+
+
+.front { 
+transform: translateZ(100px);
+background-color:blue; 
+} 
+
+.back {
+transform:rotateY(180deg)translateZ(100px); 
+
+} 
+
+.left { 
+transform: rotateY(-90deg)translateZ(100px); 
+
+} 
+
+.right { 
+transform: rotateY(90deg) translateZ(100px); 
+
+} 
+
+.top { 
+transform: rotateX(90deg) translateZ(100px);
+background-color: yellow; 
+} 
+
+.bottom { 
+transform: rotateX(-90deg) translateZ(100px); 
+
+} 
+
+
+@keyframes rotate { 
+20% { 
+transform: rotateY(-450deg) rotateX(360deg)translateZ(300px); 
+}
+40% {
+transform: rotateY(90deg) rotateX(-360deg); 
+}
+60% { 
+transform: rotateY(-360deg) rotateX(450deg); 
+}
+80% { 
+transform: rotateY(360deg) rotateX(-90deg);
+}
+}
+
+</style>
+
+</head>
+<body>
+    <background color ="cyan">
+<button id="but"> Click me </button>
+<div class="cube">
+
+<div class="b-cube">
+<div class="front">
+<div onclick="changeColor(this)" style="background-color: red;">
+Tap me to change my color!
+</div>
+
+</div>
+<div class="back">
+<div onclick="changeColor(this)" style="background-color: yellow;">
+    Tap me to change my sides color!
+</div>
+</div>
+<div class="left"> 
+<div onclick="changeColor(this)" style="background-color: black;">
+    Tap me to change my sides color!
+</div>
+</div>
+<div class="right">
+    <div onclick="gameover(this)" style="background-color: rgb(96, 114, 108);">
+        Don't Tap me to change my sides color!
+</div>
+</div>
+<div class="top">
+    <div onclick="changeColor(this)" style="background-color: pink;">
+    Tap me to change my sides color!
+
+</div>
+</div>
+<div class="bottom">
+ 
+    <div onclick="gameover(this)"  >
+        Don't Tap me!
+</div>
+</div>
+<script>
+    alert("make color of side red or black and press click me for your score")
+    var score=0;
+function gameover(element){
+    document.write("Gameover"+ name+"You lost!");
+    alert("gameover");
+}
+    function changeColor(element) {
+var currentColor = element.style.backgroundColor;
+if(currentColor == "red") {
+element.style.backgroundColor = "black";
+if(currentColor=="black")
+{score+=1;
+}
+} else {
+element.style.backgroundColor = "red"; 
+score+=10;
+}
+score+=5;
+
+}
+var name = prompt("Please enter your name", "<player>");
+
+var but = document.getElementById("but");
+
+but.addEventListener("click", function() {
+  if(score!=0){  
+    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  You won with ".fontcolor("brown")+  score+"score".fontcolor("brown"));
+  }
+  else 
+  {
+    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  Your ".fontcolor("brown")+"score".fontcolor("brown")+  score);
+  
+  }
+  alert("The button was clicked by "+ name);
+
+});
+</script>
+</background>
+</body> 
+</html>
