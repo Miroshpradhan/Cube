@@ -3,6 +3,18 @@
 <head>
 <title> A cube </title>
 <style type="text/css">
+body{
+    background-color: black;
+}
+button{
+    color:yellowgreen;
+}
+button:active{
+    background: rgb(148, 191, 240);
+}
+button:focus{
+    background: green;
+}
 .cube { 
 width: 200px; 
 height: 200px; 
@@ -16,7 +28,8 @@ color:blue;
 width: 200px; 
 transform-style: preserve-3d; 
 transform-origin: 150px 100px 0;
-animation: rotate 24s ease-in-out infinite; 
+animation: rotate 24s ease-in-out infinite ; 
+animation-play-state: paused;
 } 
 
 .b-cube div { 
@@ -29,12 +42,10 @@ justify-content: center;
 align-items: center; 
 } 
 
-
 .front { 
 transform: translateZ(100px);
 background-color:blue; 
 } 
-
 .back {
 transform:rotateY(180deg)translateZ(100px); 
 
@@ -77,26 +88,30 @@ transform: rotateY(360deg) rotateX(-90deg);
 }
 
 </style>
-
 </head>
 <body>
-<button id="but"> Click me </button>
+    <button  onclick="removepause()" > Play </button>
+</br>
+    <button  onclick="pause()" > Pause </button>
+</br>
+<button   onclick="restarting()" > Restart</button>
+</br> 
+    <button id="but"> Click me to quit and see your score </button>
+<div id ="play">
 <div class="cube">
-
 <div class="b-cube">
 <div class="front">
-<div onclick="changeColor(this)" style="background-color: red;">
+<div onclick="Color(this)" style="background-color: red;">
 Tap me to change my color!
 </div>
-
 </div>
 <div class="back">
-<div onclick="changeColor(this)" style="background-color: yellow;">
+<div onclick="Color(this)" style="background-color: yellow;">
     Tap me to change my sides color!
 </div>
 </div>
 <div class="left"> 
-<div onclick="changeColor(this)" style="background-color: black;">
+<div onclick="Color(this)" style="background-color: black;">
     Tap me to change my sides color!
 </div>
 </div>
@@ -106,36 +121,51 @@ Tap me to change my color!
 </div>
 </div>
 <div class="top">
-    <div onclick="changeColor(this)" style="background-color: pink;">
+    <div onclick="Color(this)" style="background-color: pink;">
     Tap me to change my sides color!
 
 </div>
 </div>
 <div class="bottom">
+ 
     <div onclick="gameover(this)"  >
         Don't Tap me!
 </div>
 </div>
+</div>
+</div>
+</div>
 <script>
-    alert("make color of side red or black and press click me for your score")
+    alert("Tap play and keep on changing color by taping on the sides and scores will be given accordingly!!")
+    function removepause() {
+        
+ Array.from(document.getElementsByClassName("b-cube")).forEach(elem=>{
+
+ elem.style.animationPlayState = "running";
+ elem.style.animation="rotate 24s ease-in-out infinite ";
+})};
+function pause() {
+    Array.from(document.getElementsByClassName("b-cube")).forEach(elem=>{
+
+     elem.style.animationPlayState = "paused";
+    
+})};
     var score=0;
 function gameover(element){
-    document.write("Gameover"+ name+"You lost!");
-    alert("gameover");
+    document.write(   name  +"   You lost!  with a score u will never know " +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a></br>');
+  
 }
-    function changeColor(element) {
+
+    function Color(element) {
 var currentColor = element.style.backgroundColor;
 if(currentColor == "red") {
 element.style.backgroundColor = "black";
-if(currentColor=="black")
-{score+=1;
-}
 } else {
 element.style.backgroundColor = "red"; 
+if( elem.style.animationPlayState != "paused")
 score+=10;
 }
 score+=5;
-
 }
 var name = prompt("Please enter your name", "<player>");
 
@@ -143,16 +173,23 @@ var but = document.getElementById("but");
 
 but.addEventListener("click", function() {
   if(score!=0){  
-    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  You won with ".fontcolor("brown")+  score+"score".fontcolor("brown"));
-  }
+    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  You won with ".fontcolor("brown")+  score+"score".fontcolor("brown")+'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a></br>');
+  
+}
   else 
   {
-    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  Your ".fontcolor("brown")+"score".fontcolor("brown")+  score);
-  
+    document.write("Congratulation!  ".fontcolor("brown")+name.fontcolor("blue")+ "  Your ".fontcolor("brown")+"score".fontcolor("brown")+  score)+'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a></br>';
+    
   }
-  alert("The button was clicked by "+ name);
+ 
 
 });
+function restarting()
+{
+
+    document.location.href="";
+}
+
 </script>
 </body> 
 </html>
