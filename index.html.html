@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title> A cube(tap\don't tap)
+       
+</title>
+<link rel="stylesheet" type="text/css" href="cubed.css">
+</head>
+<body>
+<button id="play"  display="none"  onclick="removepause()" > Play </button>
+</br>
+<div>
+            Name:<input type="text" id="cname"  name="fname" value=""  >
+       <button id="fcname" onclick="player()">SUBMIT</button>    
+            </div>
+    <button id="pause" onclick="pause()"  display="hidden" visibility="hidden"> <b>||</b> </button>
+</br>
+<button  id="restart" onclick="restarting()" display="hidden" visibility="hidden"> ⟳</button>
+</br> 
+    <button id="but"> Click me to quit and see your score </button>
+<div id ="play" >
+    <div id="pause">
+<div id="restart">
+</div>
+</div>       
+<div id="but">
+<div class="cube">
+<div class="b-cube">
+<div class="front">
+<div onclick="Color(this)" style="background-color: red;">
+Tap me to change my color!
+</div>
+</div>
+<div class="back">
+<div onclick="Color(this)" style="background-color: yellow;">
+    Tap me to change my sides color!
+</div>
+</div>
+<div class="left"> 
+<div onclick="Color(this)" style="background-color: black;">
+    Tap me to change my sides color!
+</div>
+</div>
+<div class="right">
+    <div onclick="gameover(this)" style="background-color: rgb(96, 114, 108);">
+        Don't Tap me to change my sides color!
+</div>
+</div>
+<div class="top">
+    <div onclick="Color(this)" style="background-color: pink;">
+    Tap me to change my sides color!
+
+</div>
+</div>
+<div class="bottom">
+ 
+    <div onclick="gameover(this)"  >
+        Don't Tap me!
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+      var p=document.getElementById('play');
+   var pa=document.getElementById('pause');
+  var nam="Player".fontsize("20");
+  var but = document.getElementById("but");
+    function removepause() {
+        p.style.display='none';
+    pa.style.display='inline-block';
+     pa.style.visibility='visible'; 
+    document.getElementById('restart').style.display='block';
+    document.getElementById('restart').style.visibility='visible';
+    document.getElementById('but').style.visibility='visible';
+    document.getElementById('but').style.display='block';
+ Array.from(document.getElementsByClassName("b-cube")).forEach(elem=>{
+    elem.style.visibility="visible";
+    elem.style.animationPlayState = "running";
+    elem.style.animation="rotate 24s ease-in out infinitely  ";
+     })
+      document.body.style.backgroundColor="gray";
+    
+};
+var i=0;
+var score=0;
+function pause() {
+    pa.style.display='block';
+       pa.style.visibility='visible'; 
+    Array.from(document.getElementsByClassName("b-cube")).forEach(elem=>{
+      if(i==0 || i %2==0)
+      {
+       
+     elem.style.animationPlayState = "paused";
+    i+=1;  
+   }
+     else if(i % 2 ==1){
+       
+    elem.style.animationPlayState = "running";
+     i+=1;
+    }
+    
+})};
+ 
+function gameover(element){
+    document.write(   name  +" You lost!  with a score u will never know ".fontcolor("brown").fontsize(17) +'</br>'+'<align ="center"><a href="" > <button onclick="restarting"><font color="red">RESTART</button></a></br>');
+   document.body.style.backgroundColor="yellow";
+}
+
+    function Color(element) {
+var currentColor = element.style.backgroundColor;
+if(currentColor == "red") {
+element.style.backgroundColor = "black";
+score+=5;
+if(score>30)
+{
+    score+=10;
+}
+} 
+else {
+element.style.backgroundColor = "red"; 
+score+=5;
+if(score>50){
+    score+=1;
+    }
+}
+}
+
+var name="";
+function player(){    
+       var nam = document.getElementById("cname").value;
+ name=(nam.fontsize(15).fontcolor("blue")).toUpperCase();
+ document.getElementById('fcname').style.display='none';
+}
+but.addEventListener("click", function() {
+  if(score!=0){  if(score<50){
+    document.write("Congratulation!  ".fontcolor("brown").fontsize(15)+name+ ("  You won with a Novice Score     "+score).fontcolor("brown").fontsize(15) +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
+      }
+      else if(score<300)
+      {  
+           document.write("Congratulation!  ".fontcolor("brown").fontsize(15)+name+ ("  You won with a Good Score     "+score).fontcolor("brown").fontsize(15) +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
+      }
+      else if(score<600)
+      {  
+           document.write("Congratulation!  ".fontcolor("brown").fontsize(15)+name+ ("  You won with a  Great Score     "+score).fontcolor("brown").fontsize(15) +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
+      }
+      else if(score<900 || score>=900)
+      {  
+           document.write("Congratulation!  ".fontcolor("brown").fontsize(15)+name+ ("  You won with an Outstanding Score     "+score).fontcolor("brown").fontsize(15) +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
+      }
+              document.body.style.backgroundColor="yellow";
+    }
+  else 
+  {
+    document.write("Congratulation!  ".fontcolor("brown").fontsize(15)+ name +( "  Your score   "+ score).fontcolor("brown").fontsize(15) +'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
+        document.body.style.backgroundColor="yellow";
+  }
+});
+function restarting()
+{
+
+    document.location.href= " ";
+}
+</script>
+</body> 
+</html>
