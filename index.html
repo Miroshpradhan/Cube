@@ -134,17 +134,17 @@ if(elem.style.animationPlayState=="paused")
     score=score-a;
     if(score<400)
    { 
-    document.write("Cheater LOL here is your score ".fontcolor("brown").fontsize("15")+score);
+    document.write("Cheater LOL here is your score ".fontcolor("brown").fontsize("15")+score+'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
      document.body.style.backgroundColor="yellow";
    }
    else if(score>400 )
    {
-     document.write("for a cheater, you obtained a good score".fontcolor("brown").fontsize("15")+score);
+     document.write("for a cheater you obtained a good score".fontcolor("brown").fontsize("15")+score+'</br>'+'<a href="" > <button onclick="restarting"><font color="red">RESTART</button></a>');
      document.body.style.backgroundColor="yellow";
    } 
 }
-});
-}
+})
+};
 var name="";
 function player(){    
        var nam = document.getElementById("cname").value;
