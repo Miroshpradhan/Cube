@@ -107,10 +107,9 @@ function gameover(element){
     document.write(   name  +" You lost!  with a score u will never know ".fontcolor("brown").fontsize(17) +'</br>'+'<align ="center"><a href="" > <button onclick="restarting"><font color="red">RESTART</button></a></br>');
    document.body.style.backgroundColor="yellow";
 }
-Var a=0;
+var a=0;
 function Color(element) {
-var 
-currentColor =element.style.backgroundColor;
+var currentColor =element.style.backgroundColor;
 if(currentColor == "red") {
 element.style.backgroundColor = "black";
 score+=5;
@@ -134,12 +133,14 @@ if(elem.style.animationPlayState=="paused")
 {
     score=score-a;
     if(score<400)
-   { document.write("Cheater LOL here is your score ".fontcolor("brown").fontsize("15")+score);  document.body.style.backgroundColor="yellow";
+   { 
+    document.write("Cheater LOL here is your score ".fontcolor("brown").fontsize("15")+score);
+     document.body.style.backgroundColor="yellow";
    }
    else if(score>400 )
    {
-    document.write("for a cheater, you obtained a good score".fontcolor("brown").fontsize("15")+score);
- document.body.style.backgroundColor="yellow";
+     document.write("for a cheater, you obtained a good score".fontcolor("brown").fontsize("15")+score);
+     document.body.style.backgroundColor="yellow";
    } 
 }
 });
